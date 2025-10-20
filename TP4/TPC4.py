@@ -4,8 +4,7 @@ import json
 import datetime as datetime
 
 def calcular_troco(valor):
-    # converte o saldo para cêntimos
-    troco = round(valor * 100)
+    troco = round(valor)
     moedas = {
         "2e": 0,
         "1e": 0,
@@ -32,6 +31,8 @@ def calcular_troco(valor):
         troco %= v
 
     return moedas
+
+print(calcular_troco(135))
 
 def print_saldo(n, s = "SALDO = "):
     if n%100 == 0:
