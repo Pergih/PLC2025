@@ -32,8 +32,6 @@ def calcular_troco(valor):
 
     return moedas
 
-print(calcular_troco(135))
-
 def print_saldo(n, s = "SALDO = "):
     if n%100 == 0:
         print(f'{s}{int(n//100)}e')
@@ -45,6 +43,7 @@ def print_saldo(n, s = "SALDO = "):
 states = (
     ('MOEDA','exclusive'),
     ('SELECIONAR','exclusive'),
+    ('ADICIONAR','exclusive'),
 )
 
 tokens = (
@@ -55,6 +54,9 @@ tokens = (
     
     'SELECIONAR', # Estado
     'CODIGO',
+    
+    'ADICIONAR', # Estado
+    # 'CODIGO',
     
     # INICIAL
     'SALDO',
@@ -96,7 +98,7 @@ def t_MOEDA_error(t):
 
 
 #####
-# SELECIONAR QUERY (CODIGO)
+# SELECIONAR QUERY
 #####
 
 def t_SELECIONAR(t):
@@ -131,6 +133,34 @@ def t_SELECIONAR_error(t):
     print(f"Erro léxico no estado SELECIONAR: {t.value[0]!r}")
     t.lexer.skip(1)
     
+#####
+# ADICIONAR QUERY
+#####
+
+def t_ADICIONAR(t):
+    r'ADICIONAR'
+    t.lexer.code_start = t.lexer.lexpos
+    t.lexer.begin('ADICIONAR')
+    return t
+
+def t_ADICIONAR_CODIGO(t):
+    r'[A-Z]\d+'
+    for i in range(len(t.lexer.stock)):
+        if t.lexer.stock[i]['cod'] == t.value:
+            prod = t.lexer.stock[i]
+    print(f"Produto adicionado \"{prod['nome']}\"")
+    prod['quant'] += 1
+        
+    t.lexer.begin('INITIAL')
+    return t
+
+t_ADICIONAR_ignore = ' \t\n'
+
+def t_ADICIONAR_error(t):
+    print(f"Erro léxico no estado ADICIONAR: {t.value[0]!r}")
+    t.lexer.skip(1)
+
+
 
 def t_LISTAR(t):
     r'LISTAR'
