@@ -87,6 +87,7 @@ def t_MOEDA_CENTIMOS(t):
 
 def t_MOEDA_DOT(t):
     r'\.$'
+    print_saldo(t.lexer.saldo)
     t.lexer.begin('INITIAL')
     return t
 
@@ -160,7 +161,9 @@ def t_ADICIONAR_error(t):
     print(f"Erro léxico no estado ADICIONAR: {t.value[0]!r}")
     t.lexer.skip(1)
 
-
+#####
+# INITIAL
+#####
 
 def t_LISTAR(t):
     r'LISTAR'
@@ -169,11 +172,6 @@ def t_LISTAR(t):
     print("----------------------------------------------------")
     for item in stock:
         print(f"{item['cod']:3} | {item['nome']:<25} | {item['quant']:10} | {item['preco']:.2f}")
-    return t
-
-def t_SALDO(t):
-    r'SALDO'    
-    print_saldo(t.lexer.saldo)
     return t
 
 def t_SAIR(t):
