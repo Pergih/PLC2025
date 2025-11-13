@@ -14,8 +14,8 @@ def rec_term(simb):
 
 # P1: Exp  --> int Exp2
 # P2:        | '(' Exp ')' Exp2
-# P3: Exp2 -->
-# P4:        | op Exp
+# P3: Exp2 --> op Exp
+# P4:        | 
 
 def rec_Exp2():
     global prox_simb
@@ -49,7 +49,7 @@ def rec_Exp():
         rec_term('PA')
         rec_Exp()
         rec_term('PF')
-        rec_Exp2()
+        rec_Exp2do()
         print("Reconheci P2: '(' Exp ')' Exp")
     else:
         parserError(prox_simb)
