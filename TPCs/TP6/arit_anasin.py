@@ -49,7 +49,7 @@ def rec_Exp():
         rec_term('PA')
         rec_Exp()
         rec_term('PF')
-        rec_Exp2do()
+        rec_Exp2()
         print("Reconheci P2: '(' Exp ')' Exp")
     else:
         parserError(prox_simb)
