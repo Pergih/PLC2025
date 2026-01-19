@@ -1,0 +1,68 @@
+pushn 6
+start
+pushs "Value: "
+storeg 3
+pushi 2
+storeg 4
+pushg 4
+pushi 3
+add
+pushf 2.5
+swap
+itof
+swap
+fmul
+storeg 5
+pushgp
+pushi 0
+padd
+pushg 4
+pushi 1
+sub
+pushg 3
+strlen
+pushg 4
+add
+storen
+pushgp
+pushi 0
+padd
+pushg 4
+pushi 1
+add
+pushi 1
+sub
+pushgp
+pushi 0
+padd
+pushg 4
+pushi 1
+sub
+loadn
+pushi 2
+mul
+storen
+pushs "ok"
+pushg 3
+concat
+writes
+pushg 5
+writef
+pushgp
+pushi 0
+padd
+pushi 2
+pushi 1
+sub
+loadn
+writei
+pushgp
+pushi 0
+padd
+pushi 3
+pushi 1
+sub
+loadn
+writei
+stop
+

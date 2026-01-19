@@ -1,0 +1,67 @@
+pushn 3
+start
+pushgp
+pushi 0
+padd
+pushi 1
+pushi 1
+sub
+pushi 10
+storen
+pushgp
+pushi 0
+padd
+pushi 2
+pushi 1
+sub
+pushi 20
+storen
+pushgp
+pushi 0
+padd
+pushi 3
+pushi 1
+sub
+pushi 30
+storen
+pushs "Soma do array: "
+writes
+pushi 0
+pusha SumArray
+call
+pop 0
+writei
+writeln
+stop
+SumArray:
+nop
+pushn 2
+pushi 0
+storel 1
+pushi 1
+storel 0
+for0: NOP
+pushl 0
+pushi 3
+infeq
+jz endFor0
+pushl 1
+pushgp
+pushi 0
+padd
+pushl 0
+pushi 1
+sub
+loadn
+add
+storel 1
+pushl 0
+pushi 1
+add
+storel 0
+jump for0
+endFor0: NOP
+pushl 1
+storel -1
+return
+

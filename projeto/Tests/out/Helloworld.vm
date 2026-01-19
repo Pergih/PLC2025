@@ -1,0 +1,6 @@
+pushn 0
+start
+pushs "Ola, Mundo!"
+writes
+stop
+

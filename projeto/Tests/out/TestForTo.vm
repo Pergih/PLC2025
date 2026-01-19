@@ -1,0 +1,19 @@
+pushn 1
+start
+pushi 1
+storeg 0
+for0: NOP
+pushg 0
+pushi 5
+infeq
+jz endFor0
+pushg 0
+writei
+pushg 0
+pushi 1
+add
+storeg 0
+jump for0
+endFor0: NOP
+stop
+

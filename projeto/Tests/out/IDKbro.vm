@@ -1,0 +1,106 @@
+pushn 7
+start
+pushs "Digite 5 numeros:"
+writes
+pushi 1
+storeg 6
+for1: NOP
+pushg 6
+pushi 5
+infeq
+jz endFor1
+pushgp
+pushi 0
+padd
+pushg 6
+pushi 1
+sub
+read
+atoi
+storen
+pushg 6
+pushi 1
+add
+storeg 6
+jump for1
+endFor1: NOP
+pushi 0
+pusha SumGlobalArray
+call
+pop 0
+storeg 5
+pushs "Soma dos elementos: "
+writes
+pushg 5
+writei
+writeln
+pushs "Mensagem: "
+writes
+pushi 0
+pusha HelloWorld
+call
+pop 0
+writes
+writeln
+pushs "Elementos do array em ordem inversa:"
+writes
+pushi 5
+storeg 6
+for2: NOP
+pushg 6
+pushi 1
+supeq
+jz endFor2
+pushgp
+pushi 0
+padd
+pushg 6
+pushi 1
+sub
+loadn
+writei
+pushg 6
+pushi 1
+sub
+storeg 6
+jump for2
+endFor2: NOP
+stop
+SumGlobalArray:
+nop
+pushn 2
+pushi 0
+storel 1
+pushi 1
+storel 0
+for0: NOP
+pushl 0
+pushi 5
+infeq
+jz endFor0
+pushl 1
+pushgp
+pushi 0
+padd
+pushl 0
+pushi 1
+sub
+loadn
+add
+storel 1
+pushl 0
+pushi 1
+add
+storel 0
+jump for0
+endFor0: NOP
+pushl 1
+storel -1
+return
+HelloWorld:
+nop
+pushn 0
+pushs "Hello, World!"
+storel -1
+return
+

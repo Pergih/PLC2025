@@ -1,0 +1,6 @@
+
+=== ERRO DE SINTAXE ===
+Linha 25:
+    valor := BinToInt(bin);
+                      ^
+Token inesperado: IDENTIFIER ('bin')
